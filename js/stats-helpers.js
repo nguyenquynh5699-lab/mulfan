@@ -33,3 +33,26 @@ export function getInsightObj(post, name) {
   const val = entry?.values?.[0]?.value;
   return (val && typeof val === 'object') ? val : null;
 }
+
+// -- Stat counting for card indicators --
+
+export function countPageStats(posts, pageId) {
+  const readReels = getReadReelIds();
+  const readComments = getReadCommentIds();
+  let hotReels = 0;
+  let newComments = 0;
+
+  posts.forEach(post => {
+    const views = getInsight(post, 'blue_reels_play_count');
+    if (views >= 1000 && !readReels.has(post.id)) hotReels++;
+
+    const comments = post.comments?.data || [];
+    comments.forEach(c => {
+      if (c.from?.id === pageId) return;
+      if (readComments.has(c.id)) return;
+      newComments++;
+    });
+  });
+
+  return { hotReels, newComments };
+}
