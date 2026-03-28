@@ -173,6 +173,19 @@ body {
   font-size: 11px;
   color: var(--text-dim);
 }
+.page-card__dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 8px;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.dot--hot { background: var(--accent); }
+.dot--cmt { background: var(--green); }
 
 /* === Modal === */
 .modal {
@@ -180,7 +193,7 @@ body {
   inset: 0;
   z-index: 1000;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
 }
 .modal-overlay {
@@ -191,13 +204,13 @@ body {
 .modal-content {
   position: relative;
   background: var(--surface);
-  border-radius: var(--radius) var(--radius) 0 0;
-  width: 100%;
+  border-radius: var(--radius);
+  width: 95%;
   max-width: 800px;
-  max-height: 92vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
 }
 .modal-header {
   display: flex;
@@ -402,14 +415,6 @@ td { white-space: break-spaces !important; }
   .page-card { padding: 20px; }
   .page-card__avatar { width: 64px; height: 64px; }
   .page-card__name { font-size: 15px; }
-  .modal {
-    align-items: center;
-  }
-  .modal-content {
-    border-radius: var(--radius);
-    max-height: 85vh;
-    width: 95vw;
-  }
   .reel-thumb { width: 60px; height: 80px; }
   .reel-desc { max-width: 260px; }
 }

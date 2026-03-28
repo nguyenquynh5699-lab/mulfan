@@ -1,7 +1,8 @@
 // Main entry — state management & event wiring
 import { fetchPages, fetchPublishedReels } from './facebook-api.js';
-import { renderGrid } from './dashboard-grid.js';
+import { renderGrid, updateCardIndicators } from './dashboard-grid.js';
 import * as store from './sheet-store.js';
+import { countPageStats } from './stats-helpers.js';
 import {
   showModal, hideModal, setLoading, initTabs, setHasMore, initInfiniteScroll,
   renderHotReels, showHotReelsEmpty, renderRecentComments
@@ -116,6 +117,7 @@ async function prefetchAllReels() {
       try {
         const { posts, afterCursor } = await fetchPublishedReels(page.id, pageTokens[page.id]);
         reelsCache[page.id] = { posts, afterCursor };
+        updateCardIndicators(page.id, countPageStats(posts, page.id));
       } catch (_) {}
     });
   await runConcurrent(tasks, 5);
