@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /Users/hopee/Desktop/SuuDucTools/mulfb show HEAD:../FB-scheduler/package.json)",
+      "Bash(git -C /Users/hopee/Desktop/SuuDucTools show HEAD:FB-scheduler/package.json)",
+      "Bash(npm install:*)",
+      "Bash(python:*)",
+      "Bash(python3:*)",
+      "Bash(wc:*)",
+      "Bash(ls /Users/hopee/Desktop/SuuDucTools/mulfb/*.html /Users/hopee/Desktop/SuuDucTools/mulfb/*.css /Users/hopee/Desktop/SuuDucTools/mulfb/*.md)",
+      "Bash(for f:*)",
+      "Bash(do echo:*)",
+      "Bash(node --check \"$f\")",
+      "Bash(done)",
+      "Bash(node:*)",
+      "Bash(echo \"CK_ACTIVE_PLAN=$CK_ACTIVE_PLAN\")",
+      "Bash(echo \"CK_SUGGESTED_PLAN=$CK_SUGGESTED_PLAN\")",
+      "Bash(echo \"CK_PLAN_DATE_FORMAT=$CK_PLAN_DATE_FORMAT\")"
+    ]
+  }
+}

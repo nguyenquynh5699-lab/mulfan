@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fanpage Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Token screen (centered) -->
+  <div id="tokenScreen" class="token-screen">
+    <h1 class="token-screen__title">Fanpage Dashboard</h1>
+    <div class="token-screen__form">
+      <input type="text" id="sheetUrlInput" class="input-token" placeholder="Google Apps Script URL...">
+    </div>
+    <div class="token-screen__form">
+      <input type="password" id="tokenInput" class="input-token" placeholder="User Access Token...">
+      <button id="fetchPagesBtn" class="btn btn--primary">Load Data</button>
+    </div>
+    <div id="loadingBar" class="loading-bar hidden"></div>
+  </div>
+
+  <!-- Dashboard (hidden until data loaded) -->
+  <header id="dashHeader" class="header hidden">
+    <h1 class="header__title">Fanpage Dashboard</h1>
+    <button id="logoutBtn" class="btn btn--secondary">Đổi token</button>
+  </header>
+
+  <main id="dashMain" class="main hidden">
+    <div id="pageGrid" class="page-grid"></div>
+  </main>
+
+  <!-- Detail Modal -->
+  <div id="detailModal" class="modal hidden">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTitle"></h2>
+        <button id="closeModal" class="btn-close" aria-label="Đóng">&times;</button>
+      </div>
+      <div id="modalLoading" class="modal-loading hidden">Đang tải dữ liệu...</div>
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="tab active" data-tab="hot-reels">Reels &gt;1K views</button>
+        <button class="tab" data-tab="recent-comments">Comments mới (2 ngày)</button>
+      </div>
+      <div class="modal-body">
+        <!-- Tab 1: Hot reels -->
+        <div id="tab-hot-reels" class="tab-panel">
+          <div class="table-wrapper">
+            <table id="reelsTable">
+              <thead>
+                <tr>
+                  <th>Thumbnail</th>
+                  <th>Mô tả</th>
+                  <th>Stats</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="reelsBody"></tbody>
+            </table>
+          </div>
+          <div id="hotReelsEmpty" class="tab-empty hidden">Không có reel nào &gt;1K views.</div>
+        </div>
+        <!-- Tab 2: Recent comments -->
+        <div id="tab-recent-comments" class="tab-panel hidden">
+          <div id="commentsList" class="comments-list"></div>
+          <div id="commentsEmpty" class="tab-empty hidden">Không có comment mới trong 2 ngày.</div>
+        </div>
+        <!-- Infinite scroll loader -->
+        <div id="scrollLoader" class="scroll-loader hidden">Đang tải thêm...</div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
